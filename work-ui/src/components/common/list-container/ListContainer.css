@@ -1,0 +1,15 @@
+.action {
+    margin-bottom: 20px;
+}
+
+.action__btn {
+    margin-right: 20px;
+}
+
+.search {
+    margin-bottom: 20px;
+}
+
+.search__input {
+    width: 100%;
+}

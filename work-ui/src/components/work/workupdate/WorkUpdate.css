@@ -1,0 +1,11 @@
+[data-theme='compact'] .ant-drawer-body p {
+    margin-bottom: 0;
+}
+
+.add-work-btn {
+    margin-right: 20px;
+}
+
+.drawer {
+    margin: 20px 0;
+}

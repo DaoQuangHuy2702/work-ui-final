@@ -1,4 +1,4 @@
-import { message, Typography } from "antd";
+import { message, Typography, Form } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ListContainer from "../../common/list-container/ListContainer";
@@ -36,6 +36,7 @@ const WorkList = () => {
   const [visitbleDetailForm, setVisibleDetailForm] = useState(false);
   const [visitbleAddForm, setVisibleAddForm] = useState(false);
   const [workId, setWorkId] = useState(null);
+  const [addWorkForm] = Form.useForm();
 
   const { data, loading } = useSelector(
     (state) => state.workReducer
@@ -131,6 +132,7 @@ const WorkList = () => {
 
   const handleOnCloseAddForm = () => {
     setVisibleAddForm(false);
+    loadWorksData();
   };
 
   useEffect(() => {
@@ -170,6 +172,7 @@ const WorkList = () => {
         visible={visitbleAddForm}
         onCloseAddWorkForm={handleOnCloseAddForm}
         workId={workId}
+        addWorkForm={addWorkForm}
       />
     </div>
   );

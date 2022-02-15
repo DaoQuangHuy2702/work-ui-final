@@ -18,7 +18,6 @@ import { loadWorkApi } from "../../../redux/api/work/api";
 
 const WorkAdd = (props) => {
   const dispatch = useDispatch();
-  const [addWorkForm] = Form.useForm();
 
   const onChangeStartDate = (date) => {
     const current = new Date();
@@ -45,10 +44,11 @@ const WorkAdd = (props) => {
     }
     console.log(work);
     if(props.workId) {
-      dispatch(updateWorkStart(props.workId, work))
+      dispatch(updateWorkStart(props.workId, work));
     } else {
       dispatch(addWorkStart(work));
       message.success("Thêm mới thành công");
+      props.addWorkForm.resetFields();
     }
     props.onCloseAddWorkForm();
   };
@@ -59,11 +59,11 @@ const WorkAdd = (props) => {
         console.log(response.data);
         const startDate = moment(response.data.startDate);
         const endDate = moment(response.data.endDate);
-        addWorkForm.setFieldsValue({...response.data, startDate: startDate, endDate: endDate})
+        props.addWorkForm.setFieldsValue({...response.data, startDate: startDate, endDate: endDate})
       })
     }
     else {
-      addWorkForm.resetFields();
+      props.addWorkForm.resetFields();
     }
   }, [props.workId])
 
@@ -78,7 +78,7 @@ const WorkAdd = (props) => {
       >
         <Form
           name="basic"
-          form={addWorkForm}
+          form={props.addWorkForm}
           labelCol={{
             span: 8,
           }}
@@ -176,7 +176,7 @@ const WorkAdd = (props) => {
                 min: 1,
                 max: 10,
                 required: true,
-                message: "Vui lòng nhập đánh giá!",
+                message: "Vui lòng nhập điểm đánh giá trong khoảng 1-10 điểm!",
               },
             ]}
           >

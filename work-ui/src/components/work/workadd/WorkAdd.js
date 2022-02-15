@@ -19,25 +19,12 @@ import { loadWorkApi } from "../../../redux/api/work/api";
 const WorkAdd = (props) => {
   const dispatch = useDispatch();
 
-  const onChangeStartDate = (date) => {
-    const current = new Date();
-    console.log(date);
-    if (current.getDate() > date.get('date')) {
-      message.error("Ngày bắt đầu phải lớn hơn hoặc bằng ngày hiện tại");
-    }
-  };
-
   const handleSubmitFailed = (errorInfo) => {
     message.error("Vui lòng nhập đúng và đầy đủ thông tin");
     console.log("Failed:", errorInfo);
   };
 
   const handleSubmitForm = (work) => {
-    const current = new Date();
-    if (current.getDate() > work.startDate.get('date')) {
-      message.error("Ngày bắt đầu phải lớn hơn hoặc bằng ngày hiện tại");
-      return;
-    }
     if (work.startDate > work.endDate) {
       message.error("Ngày bắt đầu phải nhỏ hơn ngày kết thúc");
       return;
@@ -150,7 +137,7 @@ const WorkAdd = (props) => {
               },
             ]}
           >
-            <DatePicker onChange={onChangeStartDate} />
+            <DatePicker />
           </Form.Item>
 
           <Form.Item

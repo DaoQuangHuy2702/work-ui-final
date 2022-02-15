@@ -25,7 +25,7 @@ const WorkDetail = (props) => {
         setWork(response.data);
       })
     }
-  }, [props.workId])
+  }, [props.workId, props.visitbleDetailForm])
 
   return (
     <div className="detail">

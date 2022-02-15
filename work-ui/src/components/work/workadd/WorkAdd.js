@@ -47,7 +47,6 @@ const WorkAdd = (props) => {
       dispatch(updateWorkStart(props.workId, work));
     } else {
       dispatch(addWorkStart(work));
-      message.success("Thêm mới thành công");
       props.addWorkForm.resetFields();
     }
     props.onCloseAddWorkForm();

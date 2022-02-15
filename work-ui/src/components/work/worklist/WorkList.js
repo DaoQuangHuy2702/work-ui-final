@@ -38,9 +38,7 @@ const WorkList = () => {
   const [workId, setWorkId] = useState(null);
   const [addWorkForm] = Form.useForm();
 
-  const { data, loading } = useSelector(
-    (state) => state.workReducer
-  );
+  const { data, loading } = useSelector((state) => state.workReducer);
 
   const dispatch = useDispatch();
 
@@ -77,7 +75,6 @@ const WorkList = () => {
     console.log(formatedData);
   };
 
-
   const handleOnChangeTable = (pagination, filters, sorter, extra) => {
     if (sorter.order !== undefined && sorter.order != null) {
       const sort = `${sorter.field}:${sortType[sorter.order]}`;
@@ -100,7 +97,6 @@ const WorkList = () => {
           loadWorksData();
         }
       }, selectedRowKeys.length * 500);
-      setTimeout(message.success("Xóa thành công"), 2000);
     }
   };
 
@@ -108,7 +104,6 @@ const WorkList = () => {
     console.log(searchTerm);
     setSearch(searchTerm);
   };
-
 
   const handleOnOpenDetailForm = (workId) => {
     setVisibleDetailForm(true);
